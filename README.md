@@ -19,8 +19,10 @@ Provide a solution and design/implement a report to enable users to
 
 ### Data transformation
 The solution uses `dbt` as the data transformation tool to process raw data, the 2 reports in this case, and produce reliable and efficient reports.
-Setup steps for the dbt project can be found in the `grhp/setup` directory.
-Flow of data across the pipeline is shared in `grhp/README.md`.
+Setup steps for local development of the dbt project can be found in the [grhp/setup](https://github.com/shaznishoffie/grhp-ae/tree/main/setup) directory.
+Flow of data across the pipeline is shared in [grhp/README.md](https://github.com/shaznishoffie/grhp-ae/blob/main/grhp/README.md) where the `dbt` project is located.
+It is worth noting that in a fully-automated solution, the dbt project would be scheduled to run at appropriate intervals within the day where the schedule
+is managed by a scheduler such as Apache Airflow.
 
 ### Exploratory Data Analysis
 Before proceeding to build the tables for the reconciliation report, it is non-trivial to carry out an exploratory data analysis (EDA) on the 2 trade reports.
