@@ -9,7 +9,7 @@ For simplicity, data is stored in 2 layers:
 A simplified flow of data can be visually represented by the below graph
 ```mermaid
 graph TD;
-    internal & external apps --> ghrp_raw;
+    internal_and_external_apps --> ghrp_raw;
     ghrp_raw --> ghrp_curated
 ```
 
