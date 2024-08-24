@@ -1,0 +1,27 @@
+name: 'grhp'
+version: '1.0.0'
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'grhp'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+  - "logs"
+
+models:
+  grhp:
+    staging:
+      external:
+        +meta:
+          data_source: third_party
+      internal:
+        +meta:
+          data_source: internal

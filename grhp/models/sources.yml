@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: grhp_raw
+    database: "thunder-1062"
+    schema: grhp_raw
+
+    tables:
+      - name: ghp_ae_test_external_trade_report
+        identifier: ghp_ae_test_external_trade_report
+        tests:
+          - is_fresh:
+              date_column: report_date
+              interval_in_days: 1
+      - name: ghp_ae_test_internal_trade_report
+        identifier: ghp_ae_test_internal_trade_report
+        tests:
+          - is_fresh:
+              date_column: report_date
+              interval_in_days: 1
