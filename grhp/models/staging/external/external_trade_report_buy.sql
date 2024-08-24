@@ -16,13 +16,10 @@
 
 SELECT
   product_code,
-  price,
-  report_date,
-  SUM(buy_quantity) AS total_buy_quantity,
-  SUM(sell_quantity) AS total_sell_quantity,
-FROM {{ ref('internal_trade_report') }}
-WHERE report_date = {{ exec_date() }}
-GROUP BY
-  product_code,
+  "buy" AS transaction_type,
+  buy_quantity AS quantity,
   price,
   report_date
+FROM {{ source('grhp_raw', 'ghp_ae_test_external_trade_report') }}
+WHERE report_date = {{ exec_date() }}
+  AND buy_quantity IS NOT NULL

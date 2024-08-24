@@ -16,9 +16,10 @@
 
 SELECT
   product_code,
-  buy_quantity,
-  sell_quantity,
+  "buy" AS transaction_type,
+  quantity,
   price,
   report_date
-FROM {{ source('grhp_raw', 'ghp_ae_test_external_trade_report') }}
+FROM {{ source('grhp_raw', 'ghp_ae_test_internal_trade_report') }}
 WHERE report_date = {{ exec_date() }}
+  AND quantity > 0

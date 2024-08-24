@@ -1,0 +1,25 @@
+version: 2
+models:
+  - name: trade_reconciliation_buy
+    description: Reconciliation between external and internal trade reports. Contains only buy transactions.
+    columns:
+      - name: product_code
+        description: Code of product traded
+        tests:
+          - not_null
+      - name: price
+        description: Price at which the product was traded
+      - name: report_date
+        description: Date of report
+      - name: external_quantity
+        description: Quantity of the product traded as per external report
+      - name: internal_quantity
+        description: Quantity of the product traded as per internal report
+      - name: external_trxn_count
+        description: No of transaction on the product at the price as per external report
+      - name: internal_trxn_count
+        description: No of transaction on the product at the price as per external report
+      - name: trxn_count_diff
+        description: Difference in transaction count between internal and external reports
+      - name: is_trxn_count_diff
+        description: Boolean flag for easy filtering if there are mismatches
