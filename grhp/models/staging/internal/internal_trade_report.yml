@@ -1,0 +1,17 @@
+version: 2
+models:
+  - name: internal_trade_report
+    description: Staging table of report provided by external trading party.
+    columns:
+      - name: product_code
+        description: Code of product traded
+        tests:
+          - not_null
+      - name: buy_quantity
+        description: Quantity of product bought
+      - name: sell_quantity
+        description: Quantity of product sold
+      - name: price
+        description: Price at which the product was traded
+      - name: report_date
+        description: Date of report provided by the external trading party

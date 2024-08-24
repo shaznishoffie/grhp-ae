@@ -1,0 +1,17 @@
+version: 2
+models:
+  - name: external_trade_report_agg_product_price_daily
+    description: External trade report aggregated at product, price and day level
+    columns:
+      - name: product_code
+        description: Code of product traded
+        tests:
+          - not_null
+      - name: price
+        description: Price at which the product was traded
+      - name: report_date
+        description: Date of report provided by the external trading party
+      - name: total_buy_quantity
+        description: Quantity of product bought
+      - name: total_sell_quantity
+        description: Quantity of product sold
