@@ -55,12 +55,12 @@ SELECT
   COALESCE(ext_source.price, internal.price) AS price,
   COALESCE(ext_source.report_date, internal.report_date) AS report_date,
   COALESCE(ext_source.transaction_type, internal.transaction_type) AS transaction_type,
-  ext_source.quantity AS external_quantity,
-  internal.quantity AS internal_quantity,
-  ext_source.trxn_count AS external_trxn_count,
-  internal.trxn_count AS internal_trxn_count,
-  ext_source.trxn_count - internal.trxn_count AS trxn_count_diff,
-  ext_source.trxn_count - internal.trxn_count != 0 AS is_trxn_count_diff
+  IFNULL(ext_source.quantity, 0) AS external_quantity,
+  IFNULL(internal.quantity, 0) AS internal_quantity,
+  IFNULL(ext_source.trxn_count, 0) AS external_trxn_count,
+  IFNULL(internal.trxn_count, 0) AS internal_trxn_count,
+  ABS(IFNULL(ext_source.trxn_count, 0) - IFNULL(internal.trxn_count, 0)) AS trxn_count_diff,
+  IFNULL(ext_source.trxn_count, 0) - IFNULL(internal.trxn_count, 0) != 0 AS is_trxn_count_diff
 FROM ext_source
 FULL OUTER JOIN internal
              ON ext_source.product_code = internal.product_code
