@@ -16,7 +16,7 @@
 
 SELECT
   product_code,
-  "buy" AS transaction_type,
+  "sell" AS transaction_type,
   sell_quantity AS quantity,
   price,
   report_date

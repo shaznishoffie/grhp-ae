@@ -11,6 +11,7 @@ A simplified flow of data can be visually represented by the below graph
 graph TD;
     internal_and_external_apps --> ghrp_raw;
     ghrp_raw --> ghrp_curated
+    ghrp_curated --> recon_dashboard
 ```
 
 ### Raw layer
@@ -27,3 +28,7 @@ reconciliation process that happens daily, we will add a date column `report_dat
 Curated layer contains 2 types of data:
 1. Staging data: Data from the raw layer with minimal transformation to ensure robustness to future upstream changes
 2. Transformed data: Data that is transformed with heavier calculations and aggregations to enable analytics
+
+### Dashboard report
+The output of the transformation `trade_reconciliation_*` are used in a [Looker Studio](https://lookerstudio.google.com/reporting/07b974d7-33a7-4396-b59e-bca0fd67ae36) dashboard
+where business teams can use to identify trades that are mismatched and subsequently take remedial action.
